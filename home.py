@@ -18,16 +18,6 @@ if st.button('Memory Info'):
         output = run_shell_command("free -h")
         st.text(output)
 
-# Button for Node Health
-from concurrent.futures import ThreadPoolExecutor
-import streamlit as st
-import subprocess
-
-# Function to run shell commands
-def run_shell_command(command):
-    result = subprocess.run(command, capture_output=True, text=True, shell=True)
-    return result.stdout
-
 def run_command_async(command):
     with ThreadPoolExecutor() as executor:
         future = executor.submit(run_shell_command, command)
